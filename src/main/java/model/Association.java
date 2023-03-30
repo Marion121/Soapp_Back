@@ -10,7 +10,7 @@ public class Association {
     @ApiModelProperty(value = "auto generated id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_association;
+    private Long id;
 
     @ApiModelProperty(required = true)
     @Column(length = 100)

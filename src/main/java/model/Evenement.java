@@ -3,7 +3,6 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
-import org.springframework.data.mapping.Association;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,7 +36,7 @@ public class Evenement {
 
     @ApiModelProperty(required = true)
     @OneToOne
-    @JoinColumn(name = "id_association")
+    @JoinColumn(name = "id_association_evenement")
     private Association association;
 
     @ApiModelProperty(required = false)
@@ -64,6 +63,6 @@ public class Evenement {
     @ApiModelProperty(required = false)
     private long prix_non_cotisant;
 
-    @ApiModelProperty(required = false)
-    private List<long> liste_association_liee = new ArrayList<>();
+    //@ApiModelProperty(required = false)
+   // private List<long> liste_association_liee = new ArrayList<>();
 }

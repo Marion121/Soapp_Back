@@ -2,11 +2,15 @@ package model;
 
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
-import org.springframework.data.mapping.Association;
 
 @Entity
 @Table(name= "bureau")
 public class Bureau {
+
+    @ApiModelProperty(value = "auto generated id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ApiModelProperty(required = true)
     @OneToOne
     @JoinColumn(name = "id_association")
