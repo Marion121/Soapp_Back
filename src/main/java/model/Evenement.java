@@ -63,7 +63,7 @@ public class Evenement {
 
     @ApiModelProperty(required = false)
     private long prix_non_cotisant;
-
+/*
     @ApiModelProperty(required = false)
-    private List<long> liste_association_liee = new ArrayList<>();
+    private List<long> liste_association_liee = new ArrayList<>();*/
 }
