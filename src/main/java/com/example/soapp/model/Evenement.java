@@ -1,17 +1,16 @@
-package model;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
+package com.example.soapp.model;
+
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
-import org.springframework.data.mapping.Association;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity
 @Table(name= "evenement")
+@Getter
+@Setter
 public class Evenement {
     @ApiModelProperty(value = "auto generated id")
     @Id
@@ -27,7 +26,7 @@ public class Evenement {
     private String lieu;
 
     @ApiModelProperty(required = true)
-    private Date date_creation;
+    private Date dateCreation;
 
     @ApiModelProperty(required = true)
     private Date date_evenement;
@@ -37,7 +36,7 @@ public class Evenement {
 
     @ApiModelProperty(required = true)
     @OneToOne
-    @JoinColumn(name = "id_association")
+    @JoinColumn(name = "id_association_evenement")
     private Association association;
 
     @ApiModelProperty(required = false)
@@ -59,11 +58,17 @@ public class Evenement {
     private String titre_lien ;
 
     @ApiModelProperty(required = false)
-    private long prix_cotisant;
+    private float prix_cotisant;
 
     @ApiModelProperty(required = false)
-    private long prix_non_cotisant;
+    private float prix_non_cotisant;
+
+
+
 /*
     @ApiModelProperty(required = false)
     private List<long> liste_association_liee = new ArrayList<>();*/
+
+
+
 }

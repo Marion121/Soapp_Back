@@ -8,7 +8,6 @@ public class SoappApplication {
 
     public static void main(String[] args) {
 
-
         SpringApplication.run(SoappApplication.class, args);
         System.out.println("ok mec");
     }
