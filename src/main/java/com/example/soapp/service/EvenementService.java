@@ -11,4 +11,13 @@ public interface EvenementService {
 
     Evenement creerEvenement(Evenement evenement);
 
+    List<Evenement> rechercheParJour(int jour);
+
+    List<Evenement> rechercheCalendrier(int mois);
+
+    Evenement modifier(Evenement evenement, Long id);
+
+    List<Evenement> rechercheFeed();
+
+    List<Evenement> recherchePourAsso(String nom);
 }

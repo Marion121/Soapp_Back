@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/association")
-public class AssocationControler {
+public class AssociationControler {
 
     @Autowired
     AssociationService associationService;
@@ -18,15 +18,15 @@ public class AssocationControler {
     @GetMapping
     @ApiOperation(value = "Recherche par id",
             notes = "Cette methode recherche une association en fonction de son id")
-    public Association rechercher(@RequestParam("id") Long id) {
-        return associationService.rechercher(id);
+    public Association research(@RequestParam("id") Long id) {
+        return associationService.research(id);
     }
 
     @GetMapping("/all")
     @ApiOperation(value = "Retourne toutes les associations",
             notes = "Cette methode permet de rechercher toutes les associations")
-    public List<Association> getAssociation() {
-        return associationService.getAssociation();
+    public List<Association> getAllAssociation() {
+        return associationService.getAllAssociation();
     }
 
     @PostMapping
@@ -41,6 +41,13 @@ public class AssocationControler {
             notes = "Cette methode permet de modifier une association")
     public Association modifier(@RequestBody Association association, @RequestParam("id") Long id) {
         return associationService.modifier(association, id);
+    }
+
+    @DeleteMapping
+    @ApiOperation(value = "Suppression d'une association",
+            notes = "Cette methode permet de supprimer une association")
+    public String supprimer(@RequestParam("id") Long id) {
+        return associationService.supprimer(id);
     }
 
 }

@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface AssociationService {
 
-    List<Association> getAssociation();
+    List<Association> getAllAssociation();
 
     Association creerAssociation(Association association);
 
-    Association rechercher(Long id); // par id
+    Association research(Long id); // par id
 
     Association modifier(Association association, Long id);
+
+    String supprimer(Long id);
 
 }

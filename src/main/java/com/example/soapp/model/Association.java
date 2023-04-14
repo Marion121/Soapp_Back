@@ -1,9 +1,13 @@
 package com.example.soapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name= "association")
@@ -39,8 +43,15 @@ public class Association {
     @ApiModelProperty(required = false)
     @Column(length = 100)
     private String logo;
-/*
-    @ManyToMany(mappedBy = "associationList")
-    private List<Evenement> evenementList;
-*/
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_asso",
+            joinColumns = @JoinColumn(name = "evenement_id"),
+            inverseJoinColumns = @JoinColumn(name = "association_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Evenement> evenementList;
+
+
 }

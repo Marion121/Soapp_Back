@@ -19,7 +19,7 @@ public class AssociationServicelmpl implements AssociationService{
     @Autowired
     AssociationRepository associationRepository;
 
-    public List<Association> getAssociation(){
+    public List<Association> getAllAssociation(){
         return associationRepository.findAll();
     }
 
@@ -32,7 +32,7 @@ public class AssociationServicelmpl implements AssociationService{
     }
 
     @Override
-    public Association rechercher(Long id) {
+    public Association research(Long id) {
         return associationRepository.findById(id).get();
     }
 
@@ -61,5 +61,11 @@ public class AssociationServicelmpl implements AssociationService{
                     return associationRepository.save(asso);
                 })
                 .orElseThrow(() -> new RuntimeException("Association not found"));
+    }
+
+    @Override
+    public String supprimer(Long id) {
+        associationRepository.deleteById(id);
+        return "Association supprimée";
     }
 }
