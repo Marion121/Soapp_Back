@@ -38,7 +38,7 @@ public class EvenementControler {
 
     // Marche pas, pas sur que cela se fasse
     @GetMapping("/calendrier")
-    @ApiOperation(value = "Recherche les evenements classés par jour",
+    @ApiOperation(value = "Recherche les evenements classés par mois",
             notes = "Cette methode permet de rechercher tous les évènements classer par jour")
     public List<Evenement> rechercheCalendrier(int mois) {
         return evenementService.rechercheCalendrier(mois);
@@ -66,5 +66,11 @@ public class EvenementControler {
     public List<Evenement> recherchePourAsso(String nom) {
         return evenementService.recherchePourAsso(nom);
     }
+
+    @DeleteMapping
+    @ApiOperation(value = "Suppression d'une evenement",
+            notes = "Cette methode permet de supprimer un evenement")
+    public String supprimer(@RequestParam("id") Long id) {return evenementService.supprimer(id);}
+
 
 }
