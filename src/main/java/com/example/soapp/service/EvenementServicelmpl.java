@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.TimeZone;
 
 @Service
-public class EvenementServicelmpl implements EvenementService {
+public class EvenementServicelmpl implements EvenementService{
 
     @Autowired
     private EvenementRepository evenementRepository;
@@ -97,5 +97,10 @@ public class EvenementServicelmpl implements EvenementService {
                 .orElseThrow(() -> new RuntimeException("Evenement not found"));
     }
 
+    @Override
+    public String supprimer(Long id) {
+        evenementRepository.deleteById(id);
+        return "Event supprimée";
+    }
 
 }
