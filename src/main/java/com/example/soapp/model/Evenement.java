@@ -32,10 +32,13 @@ public class Evenement {
     private Date dateCreation;
 
     @ApiModelProperty(required = true)
+    private Date datePost;
+
+    @ApiModelProperty(required = true)
     private Date date_evenement;
 
     @ApiModelProperty(required = true)
-    private Boolean validation;
+    private String validation;
 
     @ApiModelProperty(required = false)
     private int nbr_place;
@@ -48,12 +51,20 @@ public class Evenement {
     private String description ;
 
     @ApiModelProperty(required = false)
+    @Column(length = 1000)
+    private String text ;
+
+    @ApiModelProperty(required = false)
     @Column(length = 200)
     private String lien ;
 
     @ApiModelProperty(required = false)
     @Column(length = 50)
     private String titre_lien ;
+
+    @ApiModelProperty(required = false)
+    @Column(length = 50)
+    private String poster ;
 
     @ApiModelProperty(required = false)
     private float prix_cotisant;
@@ -66,6 +77,11 @@ public class Evenement {
     @JsonManagedReference
     @JsonIgnore
     private Set<Association> association;
+
+    @ManyToMany(mappedBy = "evenementParticipe")
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Etudiant> etudiants;
 
 /*
     @ApiModelProperty(required = false)

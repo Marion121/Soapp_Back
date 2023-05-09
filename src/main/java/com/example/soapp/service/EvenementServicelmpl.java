@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.TimeZone;
 
 @Service
@@ -26,6 +27,12 @@ public class EvenementServicelmpl implements EvenementService {
         evenement.setDateCreation(date);
         return evenementRepository.save(evenement);
     }
+
+    @Override
+    public Optional<Evenement> rechercheParId(Long id){
+        return evenementRepository.findById(id);
+    }
+
     @Override
     public List<Evenement> rechercheParJour(int jour){
         return evenementRepository.rechercheParJour(jour);

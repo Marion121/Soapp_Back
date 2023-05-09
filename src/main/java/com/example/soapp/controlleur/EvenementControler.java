@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/evenement")
@@ -15,7 +16,14 @@ public class EvenementControler {
     @Autowired
     private EvenementService evenementService;
 
-    @GetMapping
+    @GetMapping()
+    @ApiOperation(value = "Recherche les evenement par id",
+            notes = "Cette methode permet de rechercher tous les évènements pour un id donne")
+    public Optional<Evenement> rechercheParId(@RequestParam("id") Long id) {
+        return evenementService.rechercheParId(id);
+    }
+
+    @GetMapping("/all")
     @ApiOperation(value = "Recherche de tous les évènements",
             notes = "Cette methode permet de rechercher tous les évènements")
     public List<Evenement> getEvenements() {
@@ -66,5 +74,6 @@ public class EvenementControler {
     public List<Evenement> recherchePourAsso(String nom) {
         return evenementService.recherchePourAsso(nom);
     }
+
 
 }

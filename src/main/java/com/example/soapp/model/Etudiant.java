@@ -1,9 +1,13 @@
 package com.example.soapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
 @Table(name= "etudiant")
@@ -43,4 +47,13 @@ public class Etudiant {
     @ApiModelProperty(required = false)
     @Column(length = 1000)
     private String photo;
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_etudiant",
+            joinColumns = @JoinColumn(name = "evenement_id"),
+            inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Evenement> evenementParticipe;
 }
