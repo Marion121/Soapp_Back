@@ -51,9 +51,7 @@ public class EvenementControler {
     public List<Evenement> rechercheCalendrier(int mois) {
         return evenementService.rechercheCalendrier(mois);
     }
-
-
-    //Voir si on en fait une juste pour la validation
+         //Voir si on en fait une juste pour la validation
     @PatchMapping
     @ApiOperation(value = "Modification d'un evenement",
             notes = "Cette methode permet de modifier un evenement")

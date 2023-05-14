@@ -1,8 +1,10 @@
 package com.example.soapp.service;
 
 import com.example.soapp.model.Association;
+import com.example.soapp.model.Evenement;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AssociationService {
 
@@ -10,7 +12,8 @@ public interface AssociationService {
 
     Association creerAssociation(Association association);
 
-    Association research(Long id); // par id
+    //Association research(Long id); // par id
+    Optional<Association> rechercheParId(Long id);
 
     Association modifier(Association association, Long id);
 

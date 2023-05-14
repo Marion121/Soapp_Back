@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.TimeZone;
 
 @RestController
@@ -32,8 +33,8 @@ public class AssociationServicelmpl implements AssociationService{
     }
 
     @Override
-    public Association research(Long id) {
-        return associationRepository.findById(id).get();
+    public Optional<Association> rechercheParId(Long id) {
+        return associationRepository.findById(id);
     }
 
     @Override

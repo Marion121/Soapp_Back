@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/association")
@@ -18,8 +19,8 @@ public class AssociationControler {
     @GetMapping
     @ApiOperation(value = "Recherche par id",
             notes = "Cette methode recherche une association en fonction de son id")
-    public Association research(@RequestParam("id") Long id) {
-        return associationService.research(id);
+    public Optional<Association> research(@RequestParam("id") Long id) {
+        return associationService.rechercheParId(id);
     }
 
     @GetMapping("/all")
