@@ -15,7 +15,7 @@ public interface PostService {
 
     Post modifier(Post evenement, Long id);
 
-    List<Post> rechercheFeed();
+    //List<Post> rechercheFeed();
 
     List<Post> recherchePourAsso(String nom);
 

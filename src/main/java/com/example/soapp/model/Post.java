@@ -1,11 +1,14 @@
 package com.example.soapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name= "post")
@@ -24,6 +27,11 @@ public class Post {
 
     @ApiModelProperty(required = true)
     private Date dateCreation;
+
+    @ManyToMany(mappedBy = "postList")
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Association> association;
 
     @ApiModelProperty(required = false)
     @Column(length = 1000)

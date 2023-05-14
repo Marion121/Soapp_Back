@@ -53,7 +53,12 @@ public class Association {
     @JsonIgnore
     private Set<Evenement> evenementList;
 
-
-
-
+    @ManyToMany
+    @JoinTable(
+            name = "post_asso",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "association_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Post> postList;
 }
