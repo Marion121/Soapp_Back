@@ -44,21 +44,30 @@ public class Association {
     @Column(length = 100)
     private String logo;
 
-    @ManyToMany
+
+    /*@JoinTable(
+            name = "evenement",
+            joinColumns = @JoinColumn(name ="association_id" ),
+            inverseJoinColumns = @JoinColumn(name = "evenement_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Evenement evenementList;*/
+
+    /*@OneToMany
     @JoinTable(
             name = "event_asso",
             joinColumns = @JoinColumn(name = "evenement_id"),
             inverseJoinColumns = @JoinColumn(name = "association_id"))
     @JsonManagedReference
     @JsonIgnore
-    private Set<Evenement> evenementList;
+    private Set<Evenement> evenementList;*/
 
-    @ManyToMany
+   /* @OneToMany
     @JoinTable(
             name = "post_asso",
             joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "association_id"))
     @JsonManagedReference
     @JsonIgnore
-    private Set<Post> postList;
+    private Set<Post> postList;*/
 }

@@ -69,8 +69,8 @@ public class EvenementControler {
     @GetMapping("/asso")
     @ApiOperation(value = "Recherche les evenements pour une asso",
             notes = "Cette methode permet de rechercher tous les évènements pour une asso")
-    public List<Evenement> recherchePourAsso(String nom) {
-        return evenementService.recherchePourAsso(nom);
+    public List<Evenement> recherchePourAsso(Long id) {
+        return evenementService.recherchePourAsso(id);
     }
     
     @DeleteMapping

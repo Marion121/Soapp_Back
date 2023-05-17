@@ -44,8 +44,8 @@ public class EvenementServicelmpl implements EvenementService{
     }
 
     @Override
-    public List<Evenement> recherchePourAsso(String nom){
-        return evenementRepository.recherchePourAsso(nom);
+    public List<Evenement> recherchePourAsso(Long id){
+        return evenementRepository.recherchePourAsso(id);
     }
 
 
@@ -65,8 +65,11 @@ public class EvenementServicelmpl implements EvenementService{
                     if(evenement.getLieu() != null){
                         event.setLieu(evenement.getLieu());
                     }
-                    if(evenement.getDate_evenement() != null){
-                        event.setDate_evenement(evenement.getDate_evenement());
+                    if(evenement.getDate_debut_evenement() != null){
+                        event.setDate_debut_evenement(evenement.getDate_debut_evenement());
+                    }
+                    if(evenement.getDate_fin_evenement() != null){
+                        event.setDate_fin_evenement(evenement.getDate_fin_evenement());
                     }
                     if(evenement.getValidation() != null){
                         event.setValidation(evenement.getValidation());
@@ -80,8 +83,8 @@ public class EvenementServicelmpl implements EvenementService{
                     if(evenement.getDate_heure_shotgun() != null){
                         event.setDate_heure_shotgun(evenement.getDate_heure_shotgun());
                     }
-                    if(evenement.getAssociation() != null){
-                        event.setAssociation(evenement.getAssociation());
+                    if(evenement.getAssociation_id() != null){
+                        event.setAssociation_id(evenement.getAssociation_id());
                     }
                     if(evenement.getLien() != null){
                         event.setLien(evenement.getLien());

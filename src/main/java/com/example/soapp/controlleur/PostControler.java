@@ -48,8 +48,8 @@ public class PostControler {
     @GetMapping("/asso")
     @ApiOperation(value = "Recherche les posts pour une asso",
             notes = "Cette methode permet de rechercher tous les posts pour une asso")
-    public List<Post> recherchePourAsso(String nom) {
-        return postService.recherchePourAsso(nom);
+    public List<Post> recherchePourAsso(Long id) {
+        return postService.recherchePourAsso(id);
     }
 
     @PatchMapping

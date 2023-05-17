@@ -28,10 +28,19 @@ public class Post {
     @ApiModelProperty(required = true)
     private Date dateCreation;
 
-    @ManyToMany(mappedBy = "postList")
+    /*@ManyToMany(mappedBy = "postList")
     @JsonManagedReference
     @JsonIgnore
-    private Set<Association> association;
+    private Set<Association> association;*/
+
+    @ApiModelProperty(required = true)
+    @JoinTable(
+            name = "association",
+            joinColumns = @JoinColumn(name ="association_id" ),
+            inverseJoinColumns = @JoinColumn(name = "evenement_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Long association_id;
 
     @ApiModelProperty(required = false)
     @Column(length = 1000)

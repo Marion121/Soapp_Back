@@ -22,7 +22,7 @@ public interface EvenementService {
 
     List<Evenement> rechercheFeed();
 
-    List<Evenement> recherchePourAsso(String nom);
+    List<Evenement> recherchePourAsso(Long id);
 
     String supprimer(Long id);
 }

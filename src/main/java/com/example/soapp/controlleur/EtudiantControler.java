@@ -2,6 +2,7 @@ package com.example.soapp.controlleur;
 
 import com.example.soapp.model.Association;
 import com.example.soapp.model.Etudiant;
+import com.example.soapp.model.Evenement;
 import com.example.soapp.service.EtudiantService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,12 @@ public class EtudiantControler {
         return etudiantService.getEtudiant();
     }
 
-
+    @PatchMapping
+    @ApiOperation(value = "Modification d'un etudiant",
+            notes = "Cette methode permet de modifier un etudiant")
+    public Etudiant modifier(@RequestBody Etudiant etudiant, @RequestParam("id") Long id) {
+        return etudiantService.modifier(etudiant, id);
+    }
     @DeleteMapping
     @ApiOperation(value = "Suppression d'une etudiant",
             notes = "Cette methode permet de supprimer un etudiant")

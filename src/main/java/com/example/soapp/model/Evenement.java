@@ -35,7 +35,10 @@ public class Evenement {
     private Date datePost;
 
     @ApiModelProperty(required = true)
-    private Date date_evenement;
+    private Date date_debut_evenement;
+
+    @ApiModelProperty(required = true)
+    private Date date_fin_evenement;
 
     @ApiModelProperty(required = true)
     private String validation;
@@ -73,19 +76,29 @@ public class Evenement {
     private float prix_non_cotisant;
 
 
-    @ManyToMany(mappedBy = "evenementList")
+    /*@ManyToMany(mappedBy = "evenementList")
     @JsonManagedReference
     @JsonIgnore
-    private Set<Association> association;
+    private Set<Association> association;*/
+
+
+
+
+    @ApiModelProperty(required = true)
+    @JoinTable(
+            name = "association",
+            joinColumns = @JoinColumn(name ="association_id" ),
+            inverseJoinColumns = @JoinColumn(name = "evenement_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Long association_id;
+
 
     @ManyToMany(mappedBy = "evenementParticipe")
     @JsonManagedReference
     @JsonIgnore
     private Set<Etudiant> etudiants;
 
-/*
-    @ApiModelProperty(required = false)
-    private List<long> liste_association_liee = new ArrayList<>();*/
 
 
 

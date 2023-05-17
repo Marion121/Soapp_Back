@@ -1,6 +1,7 @@
 package com.example.soapp.service;
 
 import com.example.soapp.model.Etudiant;
+import com.example.soapp.model.Evenement;
 import com.example.soapp.model.Post;
 import com.example.soapp.repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,38 @@ public class EtudiantServicempl implements EtudiantService{
     public Optional<Etudiant> rechercheParId(Long id){
         return etudiantRepository.findById(id);
     }
+
+    @Override
+    public Etudiant modifier(Etudiant etudiant, Long id) {
+        return etudiantRepository.findById(id)
+                .map(newEtudiant -> {
+                    if(etudiant.getNom() != null){
+                        newEtudiant.setNom(etudiant.getNom());
+                    }
+                    if(etudiant.getPrenom() != null){
+                        newEtudiant.setPrenom(etudiant.getPrenom());
+                    }
+                    if(etudiant.getPromotion() != null){
+                        newEtudiant.setPromotion(etudiant.getPromotion());
+                    }
+                    if(etudiant.getMdp() != null){
+                        newEtudiant.setMdp(etudiant.getMdp());
+                    }
+                    if(etudiant.getMail() != null){
+                        newEtudiant.setMail(etudiant.getMail());
+                    }
+                    if(etudiant.getFormation()!= null){
+                        newEtudiant.setFormation(etudiant.getFormation());
+                    }
+                    if(etudiant.getPhoto()!= null){
+                        newEtudiant.setPhoto(etudiant.getPhoto());
+                    }
+
+                    return etudiantRepository.save(newEtudiant);
+                })
+                .orElseThrow(() -> new RuntimeException("Etudiant not found"));
+    }
+
 
     @Override
     public String supprimer(Long id) {

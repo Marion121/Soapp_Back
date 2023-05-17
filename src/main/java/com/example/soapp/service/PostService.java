@@ -17,7 +17,7 @@ public interface PostService {
 
     //List<Post> rechercheFeed();
 
-    List<Post> recherchePourAsso(String nom);
+    List<Post> recherchePourAsso( Long id);
 
     String supprimer(Long id);
 }

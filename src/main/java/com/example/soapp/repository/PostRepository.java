@@ -13,14 +13,8 @@ import java.util.Optional;
 @Repository
 public interface PostRepository  extends JpaRepository<Post, Long> {
 
-    /*@Query(value = "SELECT post.id, post.nom, post.dateCreation, post.description, post.lien, post.titre_lien, post.asso" +
-            "FROM post" +
-            "WHERE DAY(NOW()) <= DAY(post.dateCreation)", nativeQuery = true)
-    public abstract List<Post> rechercheFeed();*/
-
-    @Query(value = "SELECT post.id, post.nom,post.date_creation, post.description, post.lien, post.titre_lien" +
-            " FROM post INNER JOIN post_asso on post.id = post_asso.post_id " +
-            "INNER JOIN association a on post_asso.association_id = a.id " +
-            "WHERE a.nom = :nom", nativeQuery = true)
-    public abstract List<Post> recherchePourAsso(String nom);
+    @Query(value = "SELECT post.id,post.association_id, post.nom,post.date_creation, post.description, post.lien, post.titre_lien" +
+            " FROM post  " +
+            "WHERE post.association_id = :id", nativeQuery = true)
+    public abstract List<Post> recherchePourAsso(Long id);
 }

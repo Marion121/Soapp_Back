@@ -41,8 +41,8 @@ public class PostServicelmpl implements PostService{
     }*/
 
     @Override
-    public List<Post> recherchePourAsso(String nom){
-        return postRepository.recherchePourAsso(nom);
+    public List<Post> recherchePourAsso(Long id){
+        return postRepository.recherchePourAsso(id);
     }
 
     @Override
