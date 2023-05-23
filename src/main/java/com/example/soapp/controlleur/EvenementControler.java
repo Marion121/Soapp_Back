@@ -1,5 +1,6 @@
 package com.example.soapp.controlleur;
 
+import com.example.soapp.model.Etudiant;
 import com.example.soapp.model.Evenement;
 import com.example.soapp.service.EvenementService;
 import io.swagger.annotations.ApiOperation;
@@ -78,5 +79,17 @@ public class EvenementControler {
             notes = "Cette methode permet de supprimer un evenement")
     public String supprimer(@RequestParam("id") Long id) {return evenementService.supprimer(id);}
 
+    @PostMapping("/like")
+    @ApiOperation(value = "liker un evenement",
+            notes = "Cette methode permet de liker un evenement")
+    public String like(@RequestParam("idEvent") Long EvenementId, @RequestParam("idStudent") Long idEtudiant) {
+        return evenementService.like(EvenementId,idEtudiant);
+    }
 
+    @DeleteMapping("/dislike")
+    @ApiOperation(value = "supprimer le like un evenement",
+            notes = "Cette methode permet de supprimer le liker un evenement")
+        public String dislike(@RequestParam("idEvent") Long EvenementId, @RequestParam("idStudent") Long idEtudiant) {
+        return evenementService.dislike(EvenementId,idEtudiant);
+    }
 }

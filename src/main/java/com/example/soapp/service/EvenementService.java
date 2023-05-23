@@ -1,5 +1,6 @@
 package com.example.soapp.service;
 
+import com.example.soapp.model.Etudiant;
 import com.example.soapp.model.Evenement;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public interface EvenementService {
     List<Evenement> rechercheCalendrier(int mois);
 
     Evenement modifier(Evenement evenement, Long id);
+
+    String like(Long idEvenement, Long idEtudiant);
+
+    String dislike(Long idEvenement, Long idEtudiant);
 
     List<Evenement> rechercheFeed();
 

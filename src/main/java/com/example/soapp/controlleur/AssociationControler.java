@@ -1,6 +1,7 @@
 package com.example.soapp.controlleur;
 
 import com.example.soapp.model.Association;
+import com.example.soapp.model.Evenement;
 import com.example.soapp.service.AssociationService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,17 @@ public class AssociationControler {
         return associationService.supprimer(id);
     }
 
+    @PostMapping("/fav")
+    @ApiOperation(value = "mettre une association en favorie",
+            notes = "Cette methode sert à mettre une association en favorie")
+    public Association fav(@RequestParam("idAsso") Long AssoId, @RequestParam("idStudent") Long idEtudiant) {
+        return associationService.fav(AssoId,idEtudiant);
+    }
+
+    @DeleteMapping("/deletefav")
+    @ApiOperation(value = "retirer une association en favorie",
+            notes = "Cette methode sert à retirer une association en favorie")
+    public String deletefav(@RequestParam("idAsso") Long AssoId, @RequestParam("idStudent") Long idEtudiant) {
+        return associationService.deletefav(AssoId,idEtudiant);
+    }
 }

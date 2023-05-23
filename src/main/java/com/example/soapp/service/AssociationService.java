@@ -15,6 +15,10 @@ public interface AssociationService {
     //Association research(Long id); // par id
     Optional<Association> rechercheParId(Long id);
 
+    Association fav(Long idAsso, Long idEtudiant);
+
+    String deletefav(Long idAsso, Long idEtudiant);
+
     Association modifier(Association association, Long id);
 
     String supprimer(Long id);

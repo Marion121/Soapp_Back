@@ -1,9 +1,13 @@
 package com.example.soapp.service;
 
+import com.example.soapp.model.Etudiant;
 import com.example.soapp.model.Evenement;
 import com.example.soapp.repository.EvenementRepository;
+import com.example.soapp.repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +16,11 @@ import java.util.TimeZone;
 
 @Service
 public class EvenementServicelmpl implements EvenementService{
+    @Autowired
+    private EtudiantRepository etudiantRepository;
 
+    @Autowired
+    private EtudiantService etudiantService;
     @Autowired
     private EvenementRepository evenementRepository;
 
@@ -48,7 +56,33 @@ public class EvenementServicelmpl implements EvenementService{
         return evenementRepository.recherchePourAsso(id);
     }
 
+    @Override
+    public String like(Long EvenementId, Long idEtudiant) {
+        Evenement event = rechercheParId(EvenementId).orElse(null);
+        Etudiant etudiant = etudiantService.rechercheParId(idEtudiant).orElse(null);
+        if (event == null || etudiant == null) {
+            return "id event ou etudiant faux";
+        }
+        event.getEtudiants().add(etudiant);
+        etudiant.getEvenementParticipe().add(event);
+        evenementRepository.save(event);
+        etudiantRepository.save(etudiant);
+        return event.toString();
+    }
 
+    @Override
+    public String dislike(Long EvenementId, Long idEtudiant) {
+        Evenement event = rechercheParId(EvenementId).orElse(null);
+        Etudiant etudiant = etudiantService.rechercheParId(idEtudiant).orElse(null);
+        if (event == null || etudiant == null) {
+            return "erreur un des 2 id est faux";
+        }
+        event.getEtudiants().remove(etudiant);
+        etudiant.getEvenementParticipe().remove(event);
+        evenementRepository.save(event);
+        etudiantRepository.save(etudiant);
+        return event.toString();
+    }
 
     @Override
     public List<Evenement> rechercheFeed(){

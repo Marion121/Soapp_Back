@@ -44,6 +44,24 @@ public class Association {
     @Column(length = 100)
     private String logo;
 
+    @ManyToMany(mappedBy = "assoFavories")
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Etudiant> etudiants;
+
+    @Override
+    public String toString() {
+        return "Association{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", mail='" + mail + '\'' +
+                ", couleur='" + couleur + '\'' +
+                ", description='" + description + '\'' +
+                ", logo='" + logo + '\'' +
+                ", etudiants=" + etudiants +
+                '}';
+    }
 
     /*@JoinTable(
             name = "evenement",

@@ -1,7 +1,10 @@
 package com.example.soapp.service;
 
 import com.example.soapp.model.Association;
+import com.example.soapp.model.Etudiant;
+import com.example.soapp.model.Evenement;
 import com.example.soapp.repository.AssociationRepository;
+import com.example.soapp.repository.EtudiantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,10 @@ import java.util.TimeZone;
 @AllArgsConstructor
 public class AssociationServicelmpl implements AssociationService{
 
+    @Autowired
+    private EtudiantRepository etudiantRepository;
+    @Autowired
+    private EtudiantService etudiantService;
     @Autowired
     AssociationRepository associationRepository;
 
@@ -62,6 +69,38 @@ public class AssociationServicelmpl implements AssociationService{
                     return associationRepository.save(asso);
                 })
                 .orElseThrow(() -> new RuntimeException("Association not found"));
+    }
+
+    @Override
+    public Association fav(Long AssoId, Long idEtudiant) {
+        Association asso = rechercheParId(AssoId).orElse(null);
+        Etudiant etudiant = etudiantService.rechercheParId(idEtudiant).orElse(null);
+        if (asso == null || etudiant == null) {
+            return null;
+        }
+        asso.getEtudiants().add(etudiant);
+        etudiant.getAssoFavories().add(asso);
+        associationRepository.save(asso);
+        etudiantRepository.save(etudiant);
+        System.out.println(asso);
+
+        return asso;
+    }
+
+    @Override
+    public String deletefav(Long AssoId, Long idEtudiant) {
+        Association asso = rechercheParId(AssoId).orElse(null);
+        Etudiant etudiant = etudiantService.rechercheParId(idEtudiant).orElse(null);
+        if (asso == null || etudiant == null) {
+            return "erreur : 1 des 2 id est faux";
+        }
+        asso.getEtudiants().remove(etudiant);
+        etudiant.getAssoFavories().remove(  asso);
+        associationRepository.save(asso);
+        etudiantRepository.save(etudiant);
+        System.out.println(asso);
+
+        return asso.toString();
     }
 
     @Override

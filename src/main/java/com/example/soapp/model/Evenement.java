@@ -81,9 +81,6 @@ public class Evenement {
     @JsonIgnore
     private Set<Association> association;*/
 
-
-
-
     @ApiModelProperty(required = true)
     @JoinTable(
             name = "association",
@@ -100,6 +97,28 @@ public class Evenement {
     private Set<Etudiant> etudiants;
 
 
-
-
+    @Override
+    public String toString() {
+        return "Evenement{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", lieu='" + lieu + '\'' +
+                ", dateCreation=" + dateCreation +
+                ", datePost=" + datePost +
+                ", date_debut_evenement=" + date_debut_evenement +
+                ", date_fin_evenement=" + date_fin_evenement +
+                ", validation='" + validation + '\'' +
+                ", nbr_place=" + nbr_place +
+                ", date_heure_shotgun=" + date_heure_shotgun +
+                ", description='" + description + '\'' +
+                ", text='" + text + '\'' +
+                ", lien='" + lien + '\'' +
+                ", titre_lien='" + titre_lien + '\'' +
+                ", poster='" + poster + '\'' +
+                ", prix_cotisant=" + prix_cotisant +
+                ", prix_non_cotisant=" + prix_non_cotisant +
+                ", association_id=" + association_id +
+                ", etudiants=" + etudiants +
+                '}';
+    }
 }

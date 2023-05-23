@@ -51,9 +51,33 @@ public class Etudiant {
     @ManyToMany
     @JoinTable(
             name = "event_etudiant",
-            joinColumns = @JoinColumn(name = "evenement_id"),
-            inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
+            joinColumns = @JoinColumn(name = "etudiant_id" ),
+            inverseJoinColumns = @JoinColumn(name = "evenement_id"))
     @JsonManagedReference
     @JsonIgnore
     private Set<Evenement> evenementParticipe;
+
+    @ManyToMany
+    @JoinTable(
+            name = "asso_etudiant",
+            joinColumns = @JoinColumn(name = "etudiant_id" ),
+            inverseJoinColumns = @JoinColumn(name = "asso_id"))
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<Association> assoFavories;
+
+
+    @Override
+    public String toString() {
+        return "\n Etudiant{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", promotion='" + promotion + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", mail='" + mail + '\'' +
+                ", formation='" + formation + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
+    }
 }

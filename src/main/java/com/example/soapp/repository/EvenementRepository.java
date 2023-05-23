@@ -27,4 +27,6 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long> {
             " FROM evenement " +
             "WHERE evenement.association_id= :id", nativeQuery = true)
     public abstract List<Evenement> recherchePourAsso(long id);
+
+    // String sqlQuery  ="INSERT INTO `event_etudiant` (`etudiant_id`, `evenement_id`) VALUES ('3', '1');";
 }
