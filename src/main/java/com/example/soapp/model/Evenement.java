@@ -86,8 +86,8 @@ public class Evenement {
             name = "association",
             joinColumns = @JoinColumn(name ="association_id" ),
             inverseJoinColumns = @JoinColumn(name = "evenement_id"))
-    @JsonManagedReference
-    @JsonIgnore
+//    @JsonManagedReference
+//    @JsonIgnore
     private Long association_id;
 
 
