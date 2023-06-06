@@ -44,7 +44,7 @@ public class Evenement {
     private String validation;
 
     @ApiModelProperty(required = false)
-    private int nbr_place;
+    private Integer nbr_place;
 
     @ApiModelProperty(required = false)
     private Date date_heure_shotgun;
@@ -58,7 +58,7 @@ public class Evenement {
     private String text ;
 
     @ApiModelProperty(required = false)
-    @Column(length = 200)
+    @Column(length = 1000)
     private String lien ;
 
     @ApiModelProperty(required = false)
@@ -70,16 +70,8 @@ public class Evenement {
     private String poster ;
 
     @ApiModelProperty(required = false)
-    private float prix_cotisant;
+    private String prix;
 
-    @ApiModelProperty(required = false)
-    private float prix_non_cotisant;
-
-
-    /*@ManyToMany(mappedBy = "evenementList")
-    @JsonManagedReference
-    @JsonIgnore
-    private Set<Association> association;*/
 
     @ApiModelProperty(required = true)
     @JoinTable(
@@ -115,8 +107,7 @@ public class Evenement {
                 ", lien='" + lien + '\'' +
                 ", titre_lien='" + titre_lien + '\'' +
                 ", poster='" + poster + '\'' +
-                ", prix_cotisant=" + prix_cotisant +
-                ", prix_non_cotisant=" + prix_non_cotisant +
+                ", prix_cotisant=" + prix +
                 ", association_id=" + association_id +
                 ", etudiants=" + etudiants +
                 '}';

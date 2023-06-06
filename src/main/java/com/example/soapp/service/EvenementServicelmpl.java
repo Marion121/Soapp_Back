@@ -126,8 +126,8 @@ public class EvenementServicelmpl implements EvenementService{
                     if(evenement.getTitre_lien() != null){
                         event.setTitre_lien(evenement.getTitre_lien());
                     }
-                    if(evenement.getPrix_cotisant() != 0){
-                        event.setPrix_cotisant(evenement.getPrix_cotisant());
+                    if(evenement.getPrix() != null){
+                        event.setPrix(evenement.getPrix());
                     }
                     return evenementRepository.save(event);
                 })

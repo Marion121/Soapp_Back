@@ -38,8 +38,8 @@ public class Post {
             name = "association",
             joinColumns = @JoinColumn(name ="association_id" ),
             inverseJoinColumns = @JoinColumn(name = "evenement_id"))
-    @JsonManagedReference
-    @JsonIgnore
+    //@JsonManagedReference
+    //@JsonIgnore
     private Long association_id;
 
     @ApiModelProperty(required = false)
@@ -47,7 +47,7 @@ public class Post {
     private String description ;
 
     @ApiModelProperty(required = false)
-    @Column(length = 200)
+    @Column(length = 1000)
     private String lien ;
 
     @ApiModelProperty(required = false)
