@@ -15,7 +15,7 @@ public interface EvenementService {
 
     Optional<Evenement> rechercheParId(Long id);
 
-    List<Evenement> rechercheParJour(int jour);
+    List<Evenement> rechercheParJour(int jour, int mois);
 
     List<Evenement> rechercheCalendrier(int mois);
 

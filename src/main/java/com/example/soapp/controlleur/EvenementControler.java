@@ -34,8 +34,8 @@ public class EvenementControler {
     @GetMapping("/jour")
     @ApiOperation(value = "Recherche les evenement par jour",
             notes = "Cette methode permet de rechercher tous les évènements pour un jour donne")
-    public List<Evenement> rechercheParJour(int jour) {
-        return evenementService.rechercheParJour(jour);
+    public List<Evenement> rechercheParJour(int jour, int mois) {
+        return evenementService.rechercheParJour(jour, mois);
     }
 
     @PostMapping

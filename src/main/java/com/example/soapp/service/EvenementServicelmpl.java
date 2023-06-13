@@ -42,8 +42,8 @@ public class EvenementServicelmpl implements EvenementService{
     }
 
     @Override
-    public List<Evenement> rechercheParJour(int jour){
-        return evenementRepository.rechercheParJour(jour);
+    public List<Evenement> rechercheParJour(int jour, int mois){
+        return evenementRepository.rechercheParJour(jour, mois);
     }
 
     @Override

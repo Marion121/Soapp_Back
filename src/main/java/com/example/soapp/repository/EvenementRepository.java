@@ -11,8 +11,8 @@ import java.util.List;
 public interface EvenementRepository extends JpaRepository<Evenement, Long> {
 
     @Query(value = "SELECT evenement.id, evenement.association_id, evenement.date_creation, evenement.date_fin_evenement, evenement.date_debut_evenement, evenement.poster, evenement.text, evenement.date_post, evenement.date_heure_shotgun, evenement.description, evenement.lien, evenement.lieu, evenement.nbr_place, evenement.nom,evenement.prix, evenement.titre_lien, evenement.validation" +
-                   " FROM evenement WHERE DAY(date_evenement) = :jour ORDER BY date_evenement" , nativeQuery = true)
-    public abstract List<Evenement> rechercheParJour(int jour);
+                   " FROM evenement WHERE DAY(date_debut_evenement) = :jour AND MONTH(date_debut_evenement) = :mois" , nativeQuery = true)
+    public abstract List<Evenement> rechercheParJour(int jour, int mois);
 
     @Query(value = "SELECT evenement.id, evenement.association_id, evenement.date_creation, evenement.poster, evenement.text, evenement.date_post, evenement.date_fin_evenement, evenement.date_debut_evenement, evenement.date_heure_shotgun, evenement.description, evenement.lien, evenement.lieu, evenement.nbr_place, evenement.nom,evenement.prix, evenement.titre_lien, evenement.validation" +
             " FROM evenement WHERE MONTH(date_debut_evenement) = :mois ", nativeQuery = true)
